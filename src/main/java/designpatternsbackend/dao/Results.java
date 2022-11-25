@@ -18,5 +18,4 @@ public class Results {
     private Boolean isCorrect;
     private String outputData;
 
-
 }
