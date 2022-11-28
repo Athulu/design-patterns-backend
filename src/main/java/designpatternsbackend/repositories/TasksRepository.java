@@ -1,9 +1,9 @@
 package designpatternsbackend.repositories;
 
-import designpatternsbackend.dao.Tasks;
+import designpatternsbackend.dao.Task;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TasksRepository extends CrudRepository<Tasks, Long> {
+public interface TasksRepository extends CrudRepository<Task, Long> {
 }

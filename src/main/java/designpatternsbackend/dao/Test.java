@@ -3,18 +3,24 @@ package designpatternsbackend.dao;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tests {
+public class Test {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long testID;
     private String inputData;
     private String outputData;
+
+    @OneToMany(mappedBy = "test", cascade = CascadeType.ALL)
+    private List<Result> resultList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "task_id")
+    private Task task;
 }
