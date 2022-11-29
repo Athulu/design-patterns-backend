@@ -9,5 +9,4 @@ public class DesignPatternsBackendApplication {
     public static void main(String[] args) {
         SpringApplication.run(DesignPatternsBackendApplication.class, args);
     }
-
 }
