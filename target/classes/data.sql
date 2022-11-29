@@ -22,6 +22,7 @@ VALUES (11, 1),
 INSERT INTO result(is_correct, output_data, solution_id, test_id)
 VALUES (true, 'output data 1', 1, 1),
        (true, 'output data 2', 2, 2),
+       (true, 'output data 3', 2, 3),
        (true, 'output data 3', 3, 3),
        (false, 'output data 4', 4, 4),
        (false, 'output data 5', 5, 5);
