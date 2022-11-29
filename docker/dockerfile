@@ -1,0 +1,9 @@
+FROM ubuntu:20.04
+
+#COPY hot.jar .
+
+RUN apt-get update && apt-get install -y \
+    openjdk-17-jdk \
+    curl
+
+CMD ["sleep","600"]
