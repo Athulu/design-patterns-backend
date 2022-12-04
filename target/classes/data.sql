@@ -10,7 +10,9 @@ VALUES ('test1 in', 'test1 out', 1),
        ('test2 in', 'test2 out', 2),
        ('test3 in', 'test3 out', 3),
        ('test4 in', 'test4 out', 4),
-       ('test5 in', 'test5 out', 5);
+       ('2', '1', 5),
+       ('3', '3', 5),
+       ('10', '55', 5);
 
 INSERT INTO solution(results_points, task_id)
 VALUES (11, 1),
@@ -19,11 +21,9 @@ VALUES (11, 1),
        (14, 4),
        (15, 5);
 
-INSERT INTO result(is_correct, output_data, solution_id, test_id)
-VALUES (true, 'output data 1', 1, 1),
-       (true, 'output data 2', 2, 2),
-       (true, 'output data 3', 2, 3),
-       (true, 'output data 3', 3, 3),
-       (false, 'output data 4', 4, 4),
-       (false, 'output data 5', 5, 5);
+-- INSERT INTO result(is_correct, output_data, solution_id, test_id)
+-- VALUES (true, 'output data 1', 1, 1),
+--        (true, 'output data 2', 2, 2),
+--        (true, 'output data 3', 2, 3),
+--        (true, 'output data 3', 3, 3);
 

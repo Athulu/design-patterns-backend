@@ -58,14 +58,14 @@ public class AutomaticTestingService {
         return '/' + solution.getSolutionID().toString();
     }
 
-    private void testingApp(SolutionDTO2 solution, String fileName, File file) {
+    private void testingApp(SolutionDTO2 solutionDTO2, String fileName, File file) {
 
-        List<ResultDTO2> newResults;
-        List<TestDTO> testDetailsDtoList = testsService.getAllTestsByTaskID(solution.getTaskID());
+        List<ResultDTO2> resultDTO2List;
+        List<TestDTO> testDetailsDtoList = testsService.getAllTestsByTaskID(solutionDTO2.getTaskID());
 
         String nameContainer = configDockerService
                 .getPrefixContainer() +
-                solution.getSolutionID().toString() +
+                solutionDTO2.getSolutionID().toString() +
                 "_" +
                 LocalDateTime.now()
                         .atZone(ZoneId.systemDefault())
@@ -81,10 +81,17 @@ public class AutomaticTestingService {
 
         String fileNameWithoutExtension = fileName.replace(".java", "");
 
-        newResults = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList);
+        resultDTO2List = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList);
 
-
-        resultsService.saveResultsForSolution(newResults, solution.getSolutionID());
+        resultsService.saveResultsForSolution(resultDTO2List, solutionDTO2.getSolutionID());
+        //TODO: update solution
+        int result = 0;
+        for (ResultDTO2 resultDTO2: resultDTO2List) {
+            if(resultDTO2.getIsCorrect()) result++;
+        }
+        solutionDTO2.setResultsPoints((result*100)/resultDTO2List.size());
+        System.out.println("###" + solutionDTO2.getTaskID());
+        solutionsService.updateOffer(solutionDTO2);
         dockerApiService.deleteContainer(dockerClient, id);
     }
 

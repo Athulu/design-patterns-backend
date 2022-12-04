@@ -11,4 +11,5 @@ public interface SolutionsRepository extends PagingAndSortingRepository<Solution
     Solution findSolutionBySolutionID(Long id);
     List<Solution> findAll();
     List<Solution> findSolutionByTask_TaskID(Long id);
+
 }
