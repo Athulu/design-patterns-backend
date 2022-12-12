@@ -84,13 +84,12 @@ public class AutomaticTestingService {
         resultDTO2List = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList);
 
         resultsService.saveResultsForSolution(resultDTO2List, solutionDTO2.getSolutionID());
-        //TODO: update solution
+
         int result = 0;
         for (ResultDTO2 resultDTO2: resultDTO2List) {
             if(resultDTO2.getIsCorrect()) result++;
         }
         solutionDTO2.setResultsPoints((result*100)/resultDTO2List.size());
-        System.out.println("###" + solutionDTO2.getTaskID());
         solutionsService.updateOffer(solutionDTO2);
         dockerApiService.deleteContainer(dockerClient, id);
     }

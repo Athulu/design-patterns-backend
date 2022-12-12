@@ -1,25 +1,31 @@
 INSERT INTO task(name, design_pattern, description)
-VALUES ('name1', 'design pattern 1', 'description1'),
-       ('name2', 'design pattern 2', 'description2'),
-       ('name3', 'design pattern 3', 'description3'),
-       ('name4', 'design pattern 4', 'description4'),
-       ('name5', 'design pattern 5', 'description5');
+VALUES ('singleton', 'Singleton', 'description1'),
+       ('fabrykamd', 'Fabryka Metoda wytwórcza', 'description2'),
+       ('fabrykaab', 'Fabryka Abstrakcyjna', 'description3'),
+       ('fasada', 'Fasada', 'description4'),
+       ('kompozyt', 'Kompozyt', 'description5'),
+       ('strategia', 'Strategia', 'description6'),
+       ('iterator', 'Iterator', 'description7'),
+       ('obserwator', 'Obserwator', 'description8'),
+       ('dekorator', 'Dekorator', 'description9'),
+       ('adapter', 'Adapter', 'description10');
 
 INSERT INTO test(input_data, output_data, task_id)
-VALUES ('test1 in', 'test1 out', 1),
-       ('test2 in', 'test2 out', 2),
-       ('test3 in', 'test3 out', 3),
-       ('test4 in', 'test4 out', 4),
-       ('2', '1', 5),
-       ('3', '3', 5),
-       ('10', '55', 5);
+VALUES ('', 'Ta sama instancja obiektu', 1),
+       ('', 'Dodano z tego samego loggera', 1);
 
 INSERT INTO solution(results_points, task_id)
-VALUES (11, 1),
-       (12, 2),
-       (13, 3),
-       (14, 4),
-       (15, 5);
+VALUES (0, 1),
+       (0, 2),
+       (0, 3),
+       (0, 4),
+       (0, 5),
+       (0, 6),
+       (0, 7),
+       (0, 8),
+       (0, 9),
+       (0, 10);
+
 
 -- INSERT INTO result(is_correct, output_data, solution_id, test_id)
 -- VALUES (true, 'output data 1', 1, 1),

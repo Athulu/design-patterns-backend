@@ -5,6 +5,7 @@ import designpatternsbackend.xapi.services.SolutionsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/solutions")
 @AllArgsConstructor
 public class SolutionsController {
