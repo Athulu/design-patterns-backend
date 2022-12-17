@@ -7,8 +7,14 @@ spring:
   jpa:
     show-sql: true
     defer-datasource-initialization: true
-
-
-#  h2:
-#    console:
-#      enabled: true
+  docker:
+    username: nikodem
+    password: zaq1
+    host: 127.0.0.1
+    sshPort: 422
+    dockerPort: 2375
+    sessionTimeout: 60000
+    channelTimeout: 60000
+    pathFile: /home/tests
+    nameImage: docker-tester
+    prefixContainer: solution_
