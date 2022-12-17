@@ -1,6 +1,7 @@
 package designpatternsbackend.xapi.repositories;
 
 import designpatternsbackend.xapi.dao.Result;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,7 @@ public interface ResultsRepository extends PagingAndSortingRepository<Result, Lo
     List<Result> findResultsBySolution_SolutionID(Long id);
 
     List<Result> findResultsByTest_TestID(Long id);
+    List<Result> findResultsByTest_TestIDAndCookie(Long id, String cookie);
+
+    List<Result> findResultsByCookie(String cookie);
 }

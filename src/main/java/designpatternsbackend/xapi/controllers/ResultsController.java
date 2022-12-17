@@ -1,17 +1,17 @@
 package designpatternsbackend.xapi.controllers;
 
 import designpatternsbackend.xapi.dto.ResultDTO;
+import designpatternsbackend.xapi.dto.ResultDTO2;
 import designpatternsbackend.xapi.services.ResultsService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/results")
 @AllArgsConstructor
 public class ResultsController {
@@ -32,8 +32,8 @@ public class ResultsController {
         return ResponseEntity.ok(resultsService.getAllResultsBySolutionID(id));
     }
 
-    @GetMapping("/test/{id}")
-    public ResponseEntity<List<ResultDTO>> getResultListByTest(@PathVariable Long id){
-        return ResponseEntity.ok(resultsService.getAllResultsByTestID(id));
+    @PostMapping("/cookie")
+    public ResponseEntity<List<ResultDTO2>> getResultListByTest(@RequestParam(value = "cookie") String cookie){
+        return ResponseEntity.ok(resultsService.getAllResultsByCookie(cookie));
     }
 }

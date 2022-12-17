@@ -36,11 +36,11 @@ public class AutomaticTestingService {
     final CommandService commandService;
 
 
-    public MessageResponseUploadDTO uploadFromFile(Long solutionID, MultipartFile multipartFile) {
+    public MessageResponseUploadDTO uploadFromFile(Long solutionID, MultipartFile multipartFile, String cookie) {
         SolutionDTO2 solutionDTO2 = solutionsService.getSolution2ById(solutionID);
         String fileName = fileService.getName(multipartFile);
         File file = fileService.getOutputStream(fileName, multipartFile);
-        testingApp(solutionDTO2, fileName, file);
+        testingApp(solutionDTO2, fileName, file, cookie);
         return new MessageResponseUploadDTO(0, "End test");
     }
 
@@ -52,13 +52,13 @@ public class AutomaticTestingService {
 //                '/' + solutionID.toString());
 //    }
 
-    private String setSolutionFinish(Long solutionID) {
-        Solution solution = solutionRepository.findById(solutionID)
-                .orElseThrow(() -> new EntityExistsException("Solution not exist"));
-        return '/' + solution.getSolutionID().toString();
-    }
+//    private String setSolutionFinish(Long solutionID) {
+//        Solution solution = solutionRepository.findById(solutionID)
+//                .orElseThrow(() -> new EntityExistsException("Solution not exist"));
+//        return '/' + solution.getSolutionID().toString();
+//    }
 
-    private void testingApp(SolutionDTO2 solutionDTO2, String fileName, File file) {
+    private void testingApp(SolutionDTO2 solutionDTO2, String fileName, File file, String cookie) {
 
         List<ResultDTO2> resultDTO2List;
         List<TestDTO> testDetailsDtoList = testsService.getAllTestsByTaskID(solutionDTO2.getTaskID());
@@ -81,7 +81,7 @@ public class AutomaticTestingService {
 
         String fileNameWithoutExtension = fileName.replace(".java", "");
 
-        resultDTO2List = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList);
+        resultDTO2List = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList, cookie);
 
         resultsService.saveResultsForSolution(resultDTO2List, solutionDTO2.getSolutionID());
 
@@ -94,7 +94,7 @@ public class AutomaticTestingService {
         dockerApiService.deleteContainer(dockerClient, id);
     }
 
-    private List<ResultDTO2> consoleApp(DockerClient dockerClient, String id, String fileName, List<TestDTO> testDetailsDtoList) {
+    private List<ResultDTO2> consoleApp(DockerClient dockerClient, String id, String fileName, List<TestDTO> testDetailsDtoList, String cookie) {
         List<ResultDTO2> newResults = new ArrayList<>();
         try {
             for (TestDTO test : testDetailsDtoList) {
@@ -108,7 +108,7 @@ public class AutomaticTestingService {
                 );
 
                 newResults.add(new ResultDTO2(StringUtils.deleteWhitespace(runResult)
-                        .equals(StringUtils.deleteWhitespace(test.getOutputData())), runResult, test.getTestID()));
+                        .equals(StringUtils.deleteWhitespace(test.getOutputData())), runResult, cookie, test.getTestID()));
             }
         } catch (Exception ignored) {
 

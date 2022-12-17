@@ -17,6 +17,7 @@ public class ResultDTO2Mapper {
 
         resultDTO2.setIsCorrect( result.getIsCorrect() );
         resultDTO2.setOutputData( result.getOutputData() );
+        resultDTO2.setCookie( result.getCookie() );
         resultDTO2.setTestID( result.getTest().getTestID() );
 
         return resultDTO2;

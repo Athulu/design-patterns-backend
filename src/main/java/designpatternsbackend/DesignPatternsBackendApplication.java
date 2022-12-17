@@ -14,20 +14,5 @@ public class DesignPatternsBackendApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DesignPatternsBackendApplication.class, args);
-
-//        final ConfigDockerService configDockerService;
-//        final ConfigCommandService configCommandService;
-//        final ConnectDockerService connectDockerService;
-//        final FileService fileService;
-//        final DockerApiService dockerApiService;
-//        final ResultsService resultsService;
-//        final TestsService testsService;
-//        final TasksService tasksService;
-//        final SolutionsService solutionsService;
-//        final CommandService commandService;
-//
-//        AutomatingTestingService aaa = new AutomatingTestingService(, configDockerService, configCommandService,
-//                connectDockerService, fileService, dockerApiService, resultsService, testsService, tasksService, solutionsService,
-//                commandService);
     }
 }

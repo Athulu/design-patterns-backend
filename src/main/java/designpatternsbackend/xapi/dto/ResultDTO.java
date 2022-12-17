@@ -13,4 +13,5 @@ public class ResultDTO {
     private Long resultID;
     private Boolean isCorrect;
     private String outputData;
+    private String cookie;
 }

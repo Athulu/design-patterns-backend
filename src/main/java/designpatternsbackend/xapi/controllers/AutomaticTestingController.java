@@ -17,7 +17,7 @@ public class AutomaticTestingController {
     DockerApiService dockerApiService;
 
     @PostMapping("/{id}")
-    ResponseEntity<MessageResponseUploadDTO> upload(@PathVariable Long id, @RequestParam(value = "file") MultipartFile file) {
-        return ResponseEntity.ok().body(automaticTestingService.uploadFromFile(id, file));
+    ResponseEntity<MessageResponseUploadDTO> upload(@PathVariable Long id, @RequestParam(value = "file") MultipartFile file, @RequestParam(value = "cookie") String cookie) {
+        return ResponseEntity.ok().body(automaticTestingService.uploadFromFile(id, file, cookie));
     }
 }

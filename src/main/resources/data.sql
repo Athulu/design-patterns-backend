@@ -11,8 +11,14 @@ VALUES ('singleton', 'Singleton', 'description1'),
        ('adapter', 'Adapter', 'description10');
 
 INSERT INTO test(input_data, output_data, task_id)
-VALUES ('', 'Ta sama instancja obiektu', 1),
-       ('', 'Dodano z tego samego loggera', 1);
+VALUES ('1', 'Ta sama instancja obiektu', 1),
+       ('2', 'Dodano z tego samego loggera', 1),
+       ('1', 'class Car', 2),
+       ('2', 'class Motorcycle', 2),
+       ('3', 'class Airplane', 2),
+       ('4', 'engine car ok', 2),
+       ('5', 'engine motorcycle ok', 2),
+       ('6', 'engine airplane ok', 2);
 
 INSERT INTO solution(results_points, task_id)
 VALUES (0, 1),
@@ -27,8 +33,8 @@ VALUES (0, 1),
        (0, 10);
 
 
--- INSERT INTO result(is_correct, output_data, solution_id, test_id)
--- VALUES (true, 'output data 1', 1, 1),
+INSERT INTO result(is_correct, output_data, solution_id, test_id, cookie)
+VALUES (true, 'output data 1', 1, 1, 'cookie');
 --        (true, 'output data 2', 2, 2),
 --        (true, 'output data 3', 2, 3),
 --        (true, 'output data 3', 3, 3);

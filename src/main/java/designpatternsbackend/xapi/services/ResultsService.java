@@ -42,6 +42,10 @@ public class ResultsService {
         return resultsMapper.resultsToResultDTOList(resultsRepository.findResultsByTest_TestID(id));
     }
 
+    public List<ResultDTO2> getAllResultsByCookie(String cookie){
+        return ResultDTO2Mapper.resultsToResultDTO2List(resultsRepository.findResultsByCookie(cookie));
+    }
+
     @Transactional
     public List<ResultDTO2> saveResultsForSolution(List<ResultDTO2> newResults, Long solutionId) {
         Optional<Solution> solution = solutionsRepository.findById(solutionId);
@@ -60,6 +64,7 @@ public class ResultsService {
         Result result = new Result();
         result.setIsCorrect(newResult.getIsCorrect());
         result.setOutputData(newResult.getOutputData());
+        result.setCookie(newResult.getCookie());
         result.setTest(testsRepository.findById(testId)
                 .orElseThrow(() -> new EntityExistsException("Test with id " + testId + " does not exist!")));
         result.setSolution(solution.get());

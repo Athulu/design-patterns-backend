@@ -12,5 +12,6 @@ import lombok.Setter;
 public class ResultDTO2 {
     private Boolean isCorrect;
     private String outputData;
+    private String cookie;
     private Long testID;
 }

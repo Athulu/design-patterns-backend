@@ -15,6 +15,7 @@ public class Result {
     private Long resultID;
     private Boolean isCorrect;
     private String outputData;
+    private String cookie;
     @ManyToOne
     @JoinColumn(name = "solution_id")
     private Solution solution;
