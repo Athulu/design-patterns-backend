@@ -18,7 +18,18 @@ VALUES ('1', 'Ta sama instancja obiektu', 1),
        ('3', 'class Airplane', 2),
        ('4', 'engine car ok', 2),
        ('5', 'engine motorcycle ok', 2),
-       ('6', 'engine airplane ok', 2);
+       ('6', 'engine airplane ok', 2),
+       ('1', 'WindowsButton WindowsCheckbox', 3),
+       ('2', 'MacOSButton MacOSCheckbox', 3),
+       ('3', 'WindowsFactory implementuje GUIFactory', 3),
+       ('4', 'MacOSFactory implementuje GUIFactory', 3),
+       ('5', 'WindowsButton implementuje Button', 3),
+       ('6', 'MacOSButton implementuje Button', 3),
+       ('7', 'WindowsCheckbox implementuje Checkbox', 3),
+       ('8', 'MacOSCheckbox implementuje Checkbox', 3);
+
+
+
 
 INSERT INTO solution(results_points, task_id)
 VALUES (0, 1),
@@ -33,8 +44,8 @@ VALUES (0, 1),
        (0, 10);
 
 
-INSERT INTO result(is_correct, output_data, solution_id, test_id, cookie)
-VALUES (true, 'output data 1', 1, 1, 'cookie');
+-- INSERT INTO result(is_correct, output_data, solution_id, test_id, cookie)
+-- VALUES (true, 'output data 1', 1, 1, 'cookie');
 --        (true, 'output data 2', 2, 2),
 --        (true, 'output data 3', 2, 3),
 --        (true, 'output data 3', 3, 3);
