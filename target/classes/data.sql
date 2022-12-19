@@ -13,12 +13,14 @@ VALUES ('singleton', 'Singleton', 'description1'),
 INSERT INTO test(input_data, output_data, task_id)
 VALUES ('1', 'Ta sama instancja obiektu', 1),
        ('2', 'Dodano z tego samego loggera', 1),
+--        metoda wytwórcza
        ('1', 'class Car', 2),
        ('2', 'class Motorcycle', 2),
        ('3', 'class Airplane', 2),
        ('4', 'engine car ok', 2),
        ('5', 'engine motorcycle ok', 2),
        ('6', 'engine airplane ok', 2),
+--        fabryka abstrakcyjna
        ('1', 'WindowsButton WindowsCheckbox', 3),
        ('2', 'MacOSButton MacOSCheckbox', 3),
        ('3', 'WindowsFactory implementuje GUIFactory', 3),
@@ -26,7 +28,18 @@ VALUES ('1', 'Ta sama instancja obiektu', 1),
        ('5', 'WindowsButton implementuje Button', 3),
        ('6', 'MacOSButton implementuje Button', 3),
        ('7', 'WindowsCheckbox implementuje Checkbox', 3),
-       ('8', 'MacOSCheckbox implementuje Checkbox', 3);
+       ('8', 'MacOSCheckbox implementuje Checkbox', 3),
+--        fasada
+       ('1', 'Circle', 4),
+       ('2', 'Rectangle', 4),
+       ('3', 'Square', 4),
+       ('4', 'zmienna circle jest typu Circle', 4),
+       ('5', 'zmienna rectangle jest typu Rectangle', 4),
+       ('6', 'zmienna square jest typu Square', 4),
+       ('7', 'Klasa Circle implementuje interfejs Shape', 4),
+       ('8', 'Klasa Rectangle implementuje interfejs Shape', 4),
+       ('9', 'Klasa Square implementuje interfejs Shape', 4);
+
 
 
 
