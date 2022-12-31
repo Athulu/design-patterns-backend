@@ -12,7 +12,7 @@ public class ConfigDockerService {
     @Value("${spring.docker.host}")             private String host;
     @Value("${spring.docker.sshPort}")          private Integer sshPort;
     @Value("${spring.docker.dockerPort}")       private String dockerPort;
-    @Value("${spring.docker.sessionTimeout}")   private Integer sessionTimeout;
+    @Value("${spring.docker.channelTimeout}")   private Integer sessionTimeout;
     @Value("${spring.docker.channelTimeout}")   private Integer channelTimeout;
     @Value("${spring.docker.pathFile}")         private String pathFile;
     @Value("${spring.docker.nameImage}")        private String nameImage;
