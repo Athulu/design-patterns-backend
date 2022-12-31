@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3a539cb8-615e-4262-8477-bcfdcc74b39d" name="Changes" comment="" />
+    <list default="true" id="3a539cb8-615e-4262-8477-bcfdcc74b39d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/xapi/config/MyWebMvcConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/docker/AutomaticTestingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/docker/AutomaticTestingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/xapi/controllers/SolutionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/xapi/controllers/SolutionsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/xapi/controllers/TasksController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/designpatternsbackend/xapi/controllers/TasksController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../target/classes/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../target/classes/data.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +28,9 @@
     </option>
     <option name="myId2Visible">
       <map>
-        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
       </map>
     </option>
   </component>
@@ -43,7 +52,8 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+    "node.js.selected.package.tslint": "(autodetect)",
+    "spring.configuration.checksum": "20a61ae34aac665eceb67da1b09bf653"
   }
 }]]></component>
   <component name="RunManager">
@@ -64,6 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1668006946899</updated>
       <workItem from="1668006949243" duration="100000" />
+      <workItem from="1670862001342" duration="48000" />
     </task>
     <servers />
   </component>

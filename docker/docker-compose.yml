@@ -1,0 +1,6 @@
+version: "3.9"
+services:
+  tester:
+    container_name: tester
+    build: .
+    restart: on-failure
