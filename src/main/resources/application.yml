@@ -1,4 +1,5 @@
 spring:
+##  do H2
 #  datasource:
 #    url: jdbc:h2:mem:test
 #    username: sa
@@ -27,7 +28,6 @@ spring:
       platform: postgres
   liquibase:
     change-log: classpath:db/master.xml
-
   docker:
     username: nikodem
     password: zaq1
