@@ -12,13 +12,11 @@ import javax.persistence.*;
 public class Result {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="result_id")
     private Long resultID;
     private Boolean isCorrect;
     private String outputData;
     private String cookie;
-    @ManyToOne
-    @JoinColumn(name = "solution_id")
-    private Solution solution;
 
     @ManyToOne
     @JoinColumn(name = "test_id")

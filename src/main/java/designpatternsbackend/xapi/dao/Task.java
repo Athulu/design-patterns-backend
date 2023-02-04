@@ -17,13 +17,12 @@ import java.util.List;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="task_id")
     private Long taskID;
     private String name;
     private String designPattern;
     private String description;
 
-    @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
-    private List<Solution> solutionList = new ArrayList<>();
 
     @OneToMany(mappedBy = "task", cascade = CascadeType.ALL)
     private List<Test>  testList = new ArrayList<>();

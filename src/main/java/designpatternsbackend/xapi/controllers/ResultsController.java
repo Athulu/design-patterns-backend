@@ -27,10 +27,10 @@ public class ResultsController {
         return ResponseEntity.ok(resultsService.getAllResults());
     }
 
-    @GetMapping("/solution/{id}")
-    public ResponseEntity<List<ResultDTO>> getResultListBySolution(@PathVariable Long id){
-        return ResponseEntity.ok(resultsService.getAllResultsBySolutionID(id));
-    }
+//    @GetMapping("/solution/{id}")
+//    public ResponseEntity<List<ResultDTO>> getResultListBySolution(@PathVariable Long id){
+//        return ResponseEntity.ok(resultsService.getAllResultsBySolutionID(id));
+//    }
 
     @PostMapping("/cookie")
     public ResponseEntity<List<ResultDTO2>> getResultListByTest(@RequestParam(value = "cookie") String cookie){

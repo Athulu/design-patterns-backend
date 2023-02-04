@@ -14,7 +14,7 @@ public interface ResultsRepository extends PagingAndSortingRepository<Result, Lo
 
     List<Result> findAll();
 
-    List<Result> findResultsBySolution_SolutionID(Long id);
+//    List<Result> findResultsBySolution_SolutionID(Long id);
 
     List<Result> findResultsByTest_TestID(Long id);
     List<Result> findResultsByTest_TestIDAndCookie(Long id, String cookie);

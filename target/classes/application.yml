@@ -1,12 +1,33 @@
 spring:
+#  datasource:
+#    url: jdbc:h2:mem:test
+#    username: sa
+#    password:
+#    driverClassName: org.h2.Driver
   datasource:
-    url: jdbc:h2:mem:test
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/dpdb
+    username: postgres
+    password: zaq1
+
   jpa:
     show-sql: true
-    defer-datasource-initialization: true
+#    true jeśli H2 bedzie korzystane
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    hibernate:
+      ddl-auto: none
+
+  sql:
+    init:
+      mode: always
+      platform: postgres
+  liquibase:
+    change-log: classpath:db/master.xml
+
   docker:
     username: nikodem
     password: zaq1

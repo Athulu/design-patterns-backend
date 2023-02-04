@@ -1,11 +1,8 @@
 package designpatternsbackend.docker;
 
 import com.github.dockerjava.api.DockerClient;
-import designpatternsbackend.xapi.dao.Solution;
 import designpatternsbackend.xapi.dto.*;
-import designpatternsbackend.xapi.repositories.SolutionsRepository;
 import designpatternsbackend.xapi.services.ResultsService;
-import designpatternsbackend.xapi.services.SolutionsService;
 import designpatternsbackend.xapi.services.TasksService;
 import designpatternsbackend.xapi.services.TestsService;
 import lombok.AllArgsConstructor;
@@ -13,7 +10,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityExistsException;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -23,7 +19,6 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class AutomaticTestingService {
-    final SolutionsRepository solutionRepository;
     final ConfigDockerService configDockerService;
     final ConfigCommandService connfigCommandService;
     final ConnectDockerService connectDockerService;
@@ -32,15 +27,13 @@ public class AutomaticTestingService {
     final ResultsService resultsService;
     final TestsService testsService;
     final TasksService tasksService;
-    final SolutionsService solutionsService;
     final CommandService commandService;
 
 
-    public MessageResponseUploadDTO uploadFromFile(Long solutionID, MultipartFile multipartFile, String cookie) {
-        SolutionDTO2 solutionDTO2 = solutionsService.getSolution2ById(solutionID);
+    public MessageResponseUploadDTO uploadFromFile(Long taskID, MultipartFile multipartFile, String cookie) {
         String fileName = fileService.getName(multipartFile);
         File file = fileService.getOutputStream(fileName, multipartFile);
-        testingApp(solutionDTO2, fileName, file, cookie);
+        testingApp(taskID, fileName, file, cookie);
         return new MessageResponseUploadDTO(0, "End test");
     }
 
@@ -58,14 +51,14 @@ public class AutomaticTestingService {
 //        return '/' + solution.getSolutionID().toString();
 //    }
 
-    private void testingApp(SolutionDTO2 solutionDTO2, String fileName, File file, String cookie) {
+    private void testingApp(Long taskID, String fileName, File file, String cookie) {
 
         List<ResultDTO2> resultDTO2List;
-        List<TestDTO> testDetailsDtoList = testsService.getAllTestsByTaskID(solutionDTO2.getTaskID());
+        List<TestDTO> testDetailsDtoList = testsService.getAllTestsByTaskID(taskID);
 
         String nameContainer = configDockerService
                 .getPrefixContainer() +
-                solutionDTO2.getSolutionID().toString() +
+                taskID.toString() +
                 "_" +
                 LocalDateTime.now()
                         .atZone(ZoneId.systemDefault())
@@ -83,14 +76,12 @@ public class AutomaticTestingService {
 
         resultDTO2List = consoleApp(dockerClient, id, fileNameWithoutExtension, testDetailsDtoList, cookie);
 
-        resultsService.saveResultsForSolution(resultDTO2List, solutionDTO2.getSolutionID());
+        resultsService.saveResultsForSolution(resultDTO2List);
 
-        int result = 0;
-        for (ResultDTO2 resultDTO2: resultDTO2List) {
-            if(resultDTO2.getIsCorrect()) result++;
-        }
-        solutionDTO2.setResultsPoints((result*100)/resultDTO2List.size());
-        solutionsService.updateOffer(solutionDTO2);
+//        int result = 0;
+//        for (ResultDTO2 resultDTO2: resultDTO2List) {
+//            if(resultDTO2.getIsCorrect()) result++;
+//        }
         dockerApiService.deleteContainer(dockerClient, id);
     }
 
@@ -115,5 +106,4 @@ public class AutomaticTestingService {
         }
         return newResults;
     }
-
 }
